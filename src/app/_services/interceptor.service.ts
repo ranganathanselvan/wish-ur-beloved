@@ -13,8 +13,8 @@ export class InterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const reqUrl = 'http://localhost:50817/';
-    // 'https://webapicloud.azurewebsites.net/'; // environment.apiBaseUrl;
+    const reqUrl = // 'http://localhost:50817/';
+     'https://webapicloud.azurewebsites.net/'; // environment.apiBaseUrl;
     req = req.clone({
       headers: req.headers.set(
         'Authorization',
