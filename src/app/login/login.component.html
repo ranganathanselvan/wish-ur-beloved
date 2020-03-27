@@ -33,7 +33,12 @@
       <input id="pswrd" type="password" formControlName="password"
         [ngClass]="{ 'is-invalid': submitted && fval.password.errors }" placeholder="Password">
       <i class="fas fa-lock" onclick="show()"></i>
-      <input type="submit" value="Sign in">
+      <button type="submit" [disabled]="loading">
+        <div class="fa-3x">
+          <i *ngIf="loading" class="fas fa-circle-notch"></i></div>
+        Sign in
+      </button>
+      <!-- <input type="submit" value="Sign in"> -->
       <a routerLink="/register">Register</a>
     </form>
   </div>
