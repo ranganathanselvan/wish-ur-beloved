@@ -1,0 +1,13 @@
+<div>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Skills" aria-label="Skills"
+    [(ngModel)]="txtskills" aria-describedby="btnAddSkills">
+    <div class="input-group-append">
+      <button class="btn btn-outline-dark" type="button" (click)="addSkills()" id="btnAddSkills">Add Skills</button>
+    </div>
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let skill of skills">{{ skill }}</li>
+  </ul>
+</div>

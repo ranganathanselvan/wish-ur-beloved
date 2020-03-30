@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,6 +15,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { PersonalInfoComponent } from './portfolio/personal-info/personal-info.component';
+import { SkillsComponent } from './portfolio/skills/skills.component';
+import { WorkInfoComponent } from './portfolio/work-info/work-info.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,16 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    PersonalInfoComponent,
+    SkillsComponent,
+    WorkInfoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot()
