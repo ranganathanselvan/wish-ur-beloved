@@ -23,4 +23,10 @@ export class SkillsComponent implements OnInit {
     }
   }
 
+  removeSkill(index) {
+    if (this.skills.length > 0) {
+      this.skills.splice(index, 1);
+    }
+  }
+
 }
