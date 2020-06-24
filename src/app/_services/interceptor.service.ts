@@ -14,7 +14,7 @@ export class InterceptorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const reqUrl = // 'http://localhost:50817/';
-     'https://webapicloud.azurewebsites.net/'; // environment.apiBaseUrl;
+      'https://webapicloud.azurewebsites.net/'; // environment.apiBaseUrl;
     req = req.clone({
       headers: req.headers.set(
         'Authorization',
