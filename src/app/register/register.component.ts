@@ -26,14 +26,14 @@ export class RegisterComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       phone: ['', Validators.required],
-      email: ['', [Validators.required,Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
-  });
+    });
   }
 
   get fval() { return this.registerForm.controls; }
 
-  onFormSubmit(){
+  onFormSubmit() {
     this.submitted = true;
     // return for here if form is invalid
     if (this.registerForm.invalid) {
@@ -41,12 +41,12 @@ export class RegisterComponent implements OnInit {
     }
     this.loading = true;
     this.userService.register(this.registerForm.value).subscribe(
-      (data)=>{
+      (data) => {
         alert('User Registered successfully!!');
         this.router.navigate(['/login']);
-     },
-      (error)=>{
-        this.toastr.error(error.error.message, 'Error');
+      },
+      (error) => {
+        alert(error.error.Message);
         this.loading = false;
       }
     )
