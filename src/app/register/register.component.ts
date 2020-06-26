@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
         alert(error.error.Message);
         this.loading = false;
       }
-    )
+    );
 
   }
 
