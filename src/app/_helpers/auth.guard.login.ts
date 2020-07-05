@@ -14,9 +14,10 @@ export class AuthGuardLogin implements CanActivate {
         const currentUser = this.authenticationService.currentUserValue;
         console.log('login: ' + currentUser);
         if (currentUser) {
-            // authorised so return true
-
+            // authorised so return false
+            this.router.navigate(['/home']);
             return false;
+           
         }
 
         // not logged in so redirect to login page with the return url

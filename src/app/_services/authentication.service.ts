@@ -19,7 +19,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(email: string, pass: string) {
+  login(email: string, pass: string, fname :string) {
     const params = new HttpParams({
       fromObject: {
         grant_type: 'password',
@@ -38,7 +38,7 @@ export class AuthenticationService {
       .pipe(map(result => {
         if (result && result.access_token) {
           const user = new User();
-          user.firstName = '';
+          user.firstName = fname;
           user.lastName = '';
           user.email = email;
           user.phone = 0;

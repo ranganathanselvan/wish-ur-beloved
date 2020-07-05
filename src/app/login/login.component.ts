@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthenticationService } from '../_services';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,15 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  firstName: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
@@ -43,14 +46,47 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
-    this.authenticationService.login(this.fval.email.value, this.fval.password.value)
-      .subscribe(
-        data => {
-          this.router.navigate(['/home']);
-        },
-        error => {
-          this.toastr.error(error.error.message, 'Error');
-          this.loading = false;
-        });
-  }
+   
+
+
+    const opts = { params: new HttpParams({fromString: "email="+this.fval.email.value}) };
+
+    this.http.get("api/account/getuserbyemail", opts).subscribe(
+            data => {
+              if(data){
+                this.firstName =  data['FirstName'];
+                console.log(this.firstName);
+              this.authenticationService.login(this.fval.email.value, this.fval.password.value, this.firstName )
+                    .subscribe(
+                      data => {
+                        this.router.navigate(['/home']);
+                      },
+                      error => {
+                        this.toastr.error(error.error.message, 'Error');
+                        alert(error.error.message);
+                        this.loading = false;
+                      });
+
+              }
+              else{
+                alert("No user");
+                this.loading = false;
+              }
+              
+                  },
+                  error => {
+                    this.toastr.error(error.error.message, 'Error');
+                    this.loading = false;
+                  });
+                }
+  //   this.authenticationService.login(this.fval.email.value, this.fval.password.value, )
+  //     .subscribe(
+  //       data => {
+  //         this.router.navigate(['/home']);
+  //       },
+  //       error => {
+  //         this.toastr.error(error.error.message, 'Error');
+  //         this.loading = false;
+  //       });
+  // }
 }
