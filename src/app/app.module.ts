@@ -18,6 +18,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PersonalInfoComponent } from './portfolio/personal-info/personal-info.component';
 import { SkillsComponent } from './portfolio/skills/skills.component';
 import { WorkInfoComponent } from './portfolio/work-info/work-info.component';
+import { CertificationsComponent } from './portfolio/certifications/certifications.component';
+import { CertificationService } from './_services/portfolio-certifications.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { WorkInfoComponent } from './portfolio/work-info/work-info.component';
     PortfolioComponent,
     PersonalInfoComponent,
     SkillsComponent,
-    WorkInfoComponent
+    WorkInfoComponent,
+    CertificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import { WorkInfoComponent } from './portfolio/work-info/work-info.component';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot()
   ],
-  providers: [UserService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }], //
+  providers: [UserService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, CertificationService], //
   bootstrap: [AppComponent]
 })
 export class AppModule { }

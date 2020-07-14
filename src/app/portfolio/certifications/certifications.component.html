@@ -1,0 +1,46 @@
+<div>
+    <div class="form-row mt-3">
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Certificate name" [(ngModel)]="name">
+        </div>
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Certificate ID" [(ngModel)]="id">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <input type="email" class="form-control" placeholder="Issued by" [(ngModel)]="issuer">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" placeholder="Valid from" [(ngModel)]="validFrom">
+        </div>
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" placeholder="Valid till" [(ngModel)]="validTill">
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="notes" placeholder="Additional Notes" [(ngModel)]="notes">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-outline-dark" type="button" id="btnAddSkills" (click)="addCert()">Add
+            Certificates</button>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            *ngFor="let cert of certificates; index as i">
+            <div>
+                <p>Name: {{ cert.name }}</p>
+                <p>Cert ID: {{cert.certficateID}}</p>
+                <p>Issueed by: {{cert.issuer}}</p>
+                <p>Validity: {{ cert.validFrom }} - {{ cert.validTill}}</p>
+                <p>{{ cert.notes }}</p>
+
+            </div>
+            <span class="text-muted" style="color: #7f2092;">
+                <!-- <i class="fas fa-close"></i> -->
+                <i class="fas fa-trash-alt" (click)="delCert(i)"></i>
+            </span>
+        </li>
+    </ul>
+</div>
