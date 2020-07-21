@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Certification } from 'src/app/_models/certification';
-import { CertificationService } from 'src/app/_services/portfolio-certifications.service';
 
 @Component({
   selector: 'app-portfolio-certifications',
