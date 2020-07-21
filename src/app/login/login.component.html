@@ -35,11 +35,14 @@
       <input id="pswrd" type="password" formControlName="password"
         [ngClass]="{ 'is-invalid': submitted && fval.password.errors }" placeholder="Password">
       <i class="fas fa-lock" onclick="show()"></i>
-      <button type="submit" [disabled]="loading">
+      <button type="submit">
+        <i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Sign in
+      </button>
+      <!--<button type="submit" [disabled]="loading">
         <div class="fa-3x">
           <i *ngIf="loading" class="fas fa-circle-notch"></i></div>
         Sign in
-      </button>
+      </button>-->
       <!-- <button class="btn btn-primary" type="submit" [disabled]="loading">
         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         Sign in
