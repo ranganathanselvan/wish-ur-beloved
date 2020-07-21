@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Portfolio } from 'src/app/_models/portfolio';
 
 @Component({
   selector: 'app-portfolio-personal-info',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./personal-info.component.css']
 })
 export class PersonalInfoComponent implements OnInit {
+  portfolio: Portfolio;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.portfolio = new Portfolio();
   }
 
 }

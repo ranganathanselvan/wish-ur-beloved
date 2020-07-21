@@ -19,8 +19,6 @@ import { PersonalInfoComponent } from './portfolio/personal-info/personal-info.c
 import { SkillsComponent } from './portfolio/skills/skills.component';
 import { WorkInfoComponent } from './portfolio/work-info/work-info.component';
 import { CertificationsComponent } from './portfolio/certifications/certifications.component';
-import { CertificationService } from './_services/portfolio-certifications.service';
-import { WorkInfoService } from './_services/portfolio-workinfo.services';
 
 @NgModule({
   declarations: [
@@ -43,7 +41,7 @@ import { WorkInfoService } from './_services/portfolio-workinfo.services';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot()
   ],
-  providers: [UserService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, CertificationService,WorkInfoService], //
+  providers: [UserService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
