@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Skills } from 'src/app/_models/Skills';
 
 @Component({
   selector: 'app-portfolio-skills',
@@ -7,18 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SkillsComponent implements OnInit {
 
-  skills: Array<string>;
+  skills: Array<Skills>;
   txtskills: string;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.skills = new Array<string>();
+    this.skills = new Array<Skills>();
   }
 
   addSkills() {
     if (this.txtskills.length > 0) {
-      this.skills.push(this.txtskills);
+      const sks = new Skills();
+      sks.skillName = this.txtskills;
+      this.skills.push(sks);
       this.txtskills = '';
     }
   }
