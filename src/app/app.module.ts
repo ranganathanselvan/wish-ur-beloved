@@ -20,6 +20,7 @@ import { SkillsComponent } from './portfolio/skills/skills.component';
 import { WorkInfoComponent } from './portfolio/work-info/work-info.component';
 import { CertificationsComponent } from './portfolio/certifications/certifications.component';
 import { CertificationService } from './_services/portfolio-certifications.service';
+import { WorkInfoService } from './_services/portfolio-workinfo.services';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { CertificationService } from './_services/portfolio-certifications.servi
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot()
   ],
-  providers: [UserService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, CertificationService], //
+  providers: [UserService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }, CertificationService,WorkInfoService], //
   bootstrap: [AppComponent]
 })
 export class AppModule { }
