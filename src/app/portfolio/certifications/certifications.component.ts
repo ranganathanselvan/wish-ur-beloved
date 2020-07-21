@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { certificationDetails } from 'src/app/_models/certificationDetails';
-import { CertificationService } from 'src/app/_services/portfolio-certifications.service';
+import { Certification } from 'src/app/_models/certification';
 
 @Component({
   selector: 'app-portfolio-certifications',
@@ -8,40 +7,44 @@ import { CertificationService } from 'src/app/_services/portfolio-certifications
   styleUrls: ['./certifications.component.css']
 })
 export class CertificationsComponent implements OnInit {
-  
-  
-  certificates: certificationDetails[];
 
-  constructor(private certService : CertificationService) { }
+
+  certificates: Array<Certification>;
   name: string;
-  id:string;
-  issuer:string;
+  id: string;
+  issuer: string;
   validFrom: string;
   validTill: string;
   notes: string;
-  
+
+  constructor() { }
 
   ngOnInit() {
-    this.certificates = this.certService.getCertificates();
-   
+    this.certificates = new Array<Certification>();
   }
 
-  addCert(){
-    if(this.name.length>0){
-    const newCert = new certificationDetails(this.name,this.id,this.issuer,this.validFrom,this.validTill,this.notes);
-    this.certService.addCertificate(newCert);
-    this.certificates = this.certService.getCertificates();
-    this.name='';
-    this.id='';
-    this.issuer='';
-    this.validFrom='';
-    this.validTill='';
-    this.notes='';
+  addCert() {
+    if (this.name.length > 0) {
+      const cert = new Certification();
+      cert.certificationName = this.name;
+      cert.certificationId = this.id;
+      cert.issuedBy = this.issuer;
+      cert.validFrom = this.validFrom;
+      cert.validTill = this.validTill;
+      cert.additionalNotes = this.notes;
+      this.certificates.push(cert);
+      this.name = '';
+      this.id = '';
+      this.issuer = '';
+      this.validFrom = '';
+      this.validTill = '';
+      this.notes = '';
     }
   }
-  delCert(index){
-    this.certService.deleteCertificate(index);
-    this.certificates = this.certService.getCertificates();
+  delCert(index) {
+    if (this.certificates.length > 0) {
+      this.certificates.splice(index, 1);
+    }
   }
 
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { workInfo } from 'src/app/_models/workInfo';
-import { WorkInfoService } from 'src/app/_services/portfolio-workinfo.services';
+import { WorkInfo } from 'src/app/_models/workinfo';
 
 @Component({
   selector: 'app-portfolio-work-info',
@@ -9,38 +8,41 @@ import { WorkInfoService } from 'src/app/_services/portfolio-workinfo.services';
 })
 export class WorkInfoComponent implements OnInit {
 
-  works: workInfo[];
+  works: Array<WorkInfo>;
+  companyName: string;
+  designation: string;
+  from: Date;
+  to: Date;
+  isCurrentCompany: boolean;
+  expInYearMonth: string;
 
-  constructor(private workService : WorkInfoService) { }
-  proName: string;
-  designation:string;
-  from:string;
-  to: string;
-  proDesc: string;
-  roles:any;
-  
+  constructor() { }
 
   ngOnInit() {
-    this.works = this.workService.getWorkInfo();
-   
+    this.works = new Array<WorkInfo>();
   }
 
-  addWorkInfo(){
-    if(this.proName.length>0){
-    const newCert = new workInfo(this.proName,this.designation,this.from,this.to,this.proDesc,this.roles);
-    this.workService.addWorkInfo(newCert);
-    this.works = this.workService.getWorkInfo();
-    this.proName='';
-    this.designation='';
-    this.from='';
-    this.to='';
-    this.proDesc='';
-    this.roles= '';
+  addWorkInfo() {
+    if (this.companyName.length > 0) {
+      const w = new WorkInfo();
+      w.companyName = this.companyName;
+      w.role = this.designation;
+      w.startDate = this.from;
+      w.endDate = this.to;
+      w.isCurrentCompany = this.isCurrentCompany;
+      w.experienceInYearMonth = this.expInYearMonth;
+      this.works.push(w);
+      this.companyName = '';
+      this.designation = '';
+      this.from = null;
+      this.to = null;
+      this.isCurrentCompany = false;
+      this.expInYearMonth = '';
     }
   }
-  delWorkInfo(index){
-    this.workService.deleteWorkInfo(index);
-    this.works = this.workService.getWorkInfo();
+  delWorkInfo(index) {
+    if (this.works.length > 0) {
+      this.works.splice(index, 1);
+    }
   }
-
 }
