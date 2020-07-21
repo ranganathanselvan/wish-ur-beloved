@@ -1,18 +1,18 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
-import { BehaviorSubject, Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-import { User } from "../_models";
+import { User } from '../_models';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(
-      JSON.parse(sessionStorage.getItem("currentUser"))
+      JSON.parse(sessionStorage.getItem('currentUser'))
     );
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -24,7 +24,7 @@ export class AuthenticationService {
   login(email: string, pass: string, fname: string) {
     const params = new HttpParams({
       fromObject: {
-        grant_type: "password",
+        grant_type: 'password',
         username: email,
         password: pass,
       },
@@ -32,14 +32,14 @@ export class AuthenticationService {
 
     const httpOptions = {
       headers: new HttpHeaders({
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
       }),
     };
 
     return this.http.post<any>(`api/token`, params, httpOptions).pipe(
       map((result) => {
         if (result && result.access_token) {
-          sessionStorage.setItem("token", result.access_token);
+          sessionStorage.setItem('token', result.access_token);
         }
 
         return result;
@@ -48,19 +48,19 @@ export class AuthenticationService {
   }
 
   userDetails(email: string) {
-    const opts = { params: new HttpParams({ fromString: "email=" + email }) };
+    const opts = { params: new HttpParams({ fromString: 'email=' + email }) };
 
     return this.http.get<any>(`api/account/getuserbyemail`, opts).pipe(
       map((result) => {
         if (result) {
           const user = new User();
-          user.firstName = result["FirstName"];
-          user.lastName = "";
+          user.firstName = result['FirstName'];
+          user.lastName = '';
           user.email = email;
           user.phone = 0;
-          user.password = "";
+          user.password = '';
 
-          sessionStorage.setItem("currentUser", JSON.stringify(user));
+          sessionStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
         }
 
@@ -71,8 +71,8 @@ export class AuthenticationService {
 
   logout() {
     // remove user data from local storage for log out
-    sessionStorage.removeItem("currentUser");
-    sessionStorage.removeItem("token");
+    sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('token');
     this.currentUserSubject.next(null);
   }
 }
