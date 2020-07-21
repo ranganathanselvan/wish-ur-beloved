@@ -4,6 +4,7 @@ import { AuthGuard } from './_helpers/auth.guard';
 
 /** Componenets */
 import { LoginComponent } from './login/login.component';
+import { LoginBootComponent } from './login-boot/login-boot.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'portfolio', component: PortfolioComponent, canActivate: [AuthGuard] },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginBootComponent
   },
   {
     path: 'register',

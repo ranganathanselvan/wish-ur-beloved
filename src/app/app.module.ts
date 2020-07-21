@@ -18,6 +18,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PersonalInfoComponent } from './portfolio/personal-info/personal-info.component';
 import { SkillsComponent } from './portfolio/skills/skills.component';
 import { WorkInfoComponent } from './portfolio/work-info/work-info.component';
+import { LoginBootComponent } from './login-boot/login-boot.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { WorkInfoComponent } from './portfolio/work-info/work-info.component';
     PortfolioComponent,
     PersonalInfoComponent,
     SkillsComponent,
-    WorkInfoComponent
+    WorkInfoComponent,
+    LoginBootComponent
   ],
   imports: [
     BrowserModule,

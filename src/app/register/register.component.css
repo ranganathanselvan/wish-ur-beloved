@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
+/*@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
 .signup-body {
   margin: 0;
 	padding: 0;
@@ -41,4 +41,79 @@ form input{
 	border: 1px solid silver;
 	font-size: 18px;
 	outline: none;
+}
+*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  background: #eee;
+  color: #666;
+}
+
+.register-container {
+  height: 100vh;
+  width: 100%;
+}
+
+.register-form {
+  margin: auto;
+  width: 370px;
+  padding: 15px;
+  max-width: 100%;
+}
+
+.register-form .form-control {
+  font-size: 15px;
+  min-height: 45px;
+  font-weight: 500;
+}
+
+.register-form a {
+  text-decoration: none;
+  color: #666;
+}
+
+.register-form a:hover {
+  color: #723dbe;
+}
+
+.forgot-link {
+  font-size: 13px;
+}
+
+.form-control:focus {
+  border-color: #723dbe;
+  box-shadow: 0 0 0 0.2rem rgba(114, 61, 190, .25);
+}
+
+.form-control.ng-touched.ng-invalid {
+  border-color: #dc3545;
+}
+
+.btn-custom {
+  background: #723dbe;
+  border-color: #723dbe;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  min-height: 45px;
+}
+
+.btn-custom:focus,
+.btn-custom:hover,
+.btn-custom:active,
+.btn-custom:active:focus {
+  background: #54229d;
+  border-color: #54229d;
+  color: #fff;
+}
+
+.btn-custom:focus {
+  box-shadow: 0 0 0 0.2rem rgba(114, 61, 190, .25);
+}
+
+.text-color-purple {
+  color: #723dbe;
 }
