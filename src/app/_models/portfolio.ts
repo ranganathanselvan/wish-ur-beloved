@@ -1,6 +1,8 @@
 import { Skills } from './Skills';
 import { WorkInfo } from './workinfo';
 import { Certification } from './certification';
+import { Awards } from './awards';
+import { Languages } from './languages';
 
 export class Portfolio {
   id: string;
@@ -13,5 +15,7 @@ export class Portfolio {
   skills: Array<Skills>;
   workInfo: Array<WorkInfo>;
   certifications: Array<Certification>;
+  awards:Array<Awards>;
+  languages:Array<Languages>;
   createdOn: Date;
 }

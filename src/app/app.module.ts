@@ -19,6 +19,8 @@ import { PersonalInfoComponent } from './portfolio/personal-info/personal-info.c
 import { SkillsComponent } from './portfolio/skills/skills.component';
 import { WorkInfoComponent } from './portfolio/work-info/work-info.component';
 import { CertificationsComponent } from './portfolio/certifications/certifications.component';
+import { AwardsComponent } from './portfolio/awards/awards.component';
+import { LanguagesComponent } from './portfolio/languages/languages.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { CertificationsComponent } from './portfolio/certifications/certificatio
     PersonalInfoComponent,
     SkillsComponent,
     WorkInfoComponent,
-    CertificationsComponent
+    CertificationsComponent,
+    AwardsComponent,
+    LanguagesComponent
   ],
   imports: [
     BrowserModule,
