@@ -4,6 +4,7 @@ import { WorkInfoComponent } from './work-info/work-info.component';
 import { CertificationsComponent } from './certifications/certifications.component';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { Portfolio } from '../_models/portfolio';
+import { PortfolioService } from '../_services/portfolio.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -16,7 +17,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   @ViewChild(CertificationsComponent) certificationReference;
   @ViewChild(PersonalInfoComponent) personalInfoReference;
   portfolio: Portfolio;
-  constructor() { }
+  constructor(private portfolioService: PortfolioService) { }
 
   ngOnInit(): void {
   }
@@ -30,5 +31,12 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
 
   onSubmit() {
     console.log(this.portfolio);
+    this.portfolioService.createPortfolio(this.portfolio).subscribe(
+      (data) => {
+        alert('Your information saved successfully!!');
+      },
+      (error) => {
+        alert(error.error.Message);
+      });
   }
 }
