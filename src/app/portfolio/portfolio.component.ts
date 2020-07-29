@@ -1,18 +1,19 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { SkillsComponent } from './skills/skills.component';
-import { WorkInfoComponent } from './work-info/work-info.component';
-import { CertificationsComponent } from './certifications/certifications.component';
-import { PersonalInfoComponent } from './personal-info/personal-info.component';
-import { Portfolio } from '../_models/portfolio';
-import { Awards } from '../_models/awards';
-import { Languages } from '../_models/languages';
-import { LanguagesComponent } from './languages/languages.component';
-import { AwardsComponent } from './awards/awards.component';
+import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
+import { SkillsComponent } from "./skills/skills.component";
+import { WorkInfoComponent } from "./work-info/work-info.component";
+import { CertificationsComponent } from "./certifications/certifications.component";
+import { PersonalInfoComponent } from "./personal-info/personal-info.component";
+import { Portfolio } from "../_models/portfolio";
+import { Awards } from "../_models/awards";
+import { Languages } from "../_models/languages";
+import { LanguagesComponent } from "./languages/languages.component";
+import { AwardsComponent } from "./awards/awards.component";
+import { PortfolioService } from "../_services/portfolio.service";
 
 @Component({
-  selector: 'app-portfolio',
-  templateUrl: './portfolio.component.html',
-  styleUrls: ['./portfolio.component.css']
+  selector: "app-portfolio",
+  templateUrl: "./portfolio.component.html",
+  styleUrls: ["./portfolio.component.css"],
 })
 export class PortfolioComponent implements OnInit, AfterViewInit {
   @ViewChild(SkillsComponent) skillReference;
@@ -22,10 +23,10 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   @ViewChild(AwardsComponent) awardsReference;
   @ViewChild(LanguagesComponent) languagesReference;
   portfolio: Portfolio;
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+  constructor(private portfolioService: PortfolioService) {}
+
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.portfolio = this.personalInfoReference.portfolio;
@@ -33,10 +34,30 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
     this.portfolio.workInfo = this.workInfoReference.works;
     this.portfolio.certifications = this.certificationReference.certificates;
     this.portfolio.awards = this.awardsReference.awards;
-    this.portfolio.certifications = this.languagesReference.languages;
+    this.portfolio.languages = this.languagesReference.languages;
   }
 
   onSubmit() {
     console.log(this.portfolio);
+
+    this.portfolioService.createPortfolio(this.portfolio).subscribe(
+      (data) => {
+        alert("Saved successfully!!");
+      },
+      (error) => {
+        if (error.error.Message.search("exists")) {
+          this.portfolioService.updatePortfolio(this.portfolio).subscribe(
+            (data) => {
+              alert("Updated successfully!!");
+            },
+            (error) => {
+              alert(error.error.Message);
+            }
+          );
+        } else {
+          alert(error.error.Message);
+        }
+      }
+    );
   }
 }

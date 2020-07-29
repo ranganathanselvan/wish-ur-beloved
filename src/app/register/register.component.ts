@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  newUserEmail = true;
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -46,7 +47,8 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       (error) => {
-        alert(error.error.Message);
+        if(error.error.Message.search("exists"))
+          this.newUserEmail = false;
         this.loading = false;
       }
     );
