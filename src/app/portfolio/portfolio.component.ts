@@ -46,17 +46,21 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
       },
       (error) => {
         if (error.error.Message.search("exists")) {
-          this.portfolioService.updatePortfolio(this.portfolio).subscribe(
-            (data) => {
-              alert("Updated successfully!!");
-            },
-            (error) => {
-              alert(error.error.Message);
-            }
-          );
+          this.updateUser();
         } else {
           alert(error.error.Message);
         }
+      }
+    );
+  }
+
+  updateUser(){
+    this.portfolioService.updatePortfolio(this.portfolio).subscribe(
+      (data) => {
+        alert("Updated successfully!!");
+      },
+      (error) => {
+        alert(error.error.Message);
       }
     );
   }
