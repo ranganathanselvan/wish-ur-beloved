@@ -15,7 +15,7 @@ export class Portfolio {
   skills: Array<Skills>;
   workInfo: Array<WorkInfo>;
   certifications: Array<Certification>;
-  awards:Array<Awards>;
-  languages:Array<Languages>;
+  awards: Array<Awards>;
+  languages: Array<Languages>;
   createdOn: Date;
 }

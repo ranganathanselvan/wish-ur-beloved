@@ -8,6 +8,8 @@ import { ToastrModule } from 'ngx-toastr';
 // services
 import { InterceptorService } from './_services/interceptor.service';
 import { UserService } from './_services/user.service';
+import { PortfolioService } from './_services/portfolio.service';
+import { DataShareService } from './_services/datashare.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,7 +47,12 @@ import { LanguagesComponent } from './portfolio/languages/languages.component';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot()
   ],
-  providers: [UserService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
+  providers: [
+    UserService,
+    PortfolioService,
+    DataShareService,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

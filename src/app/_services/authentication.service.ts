@@ -54,7 +54,7 @@ export class AuthenticationService {
       map((result) => {
         if (result) {
           const user = new User();
-          user.firstName = result['FirstName'];
+          user.firstName = result.FirstName;
           user.lastName = '';
           user.email = email;
           user.phone = 0;

@@ -9,83 +9,85 @@
   </div>
 </header>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
 
-<!-- ACTIONS -->
-<section id="actions" class="py-4 mb-4 bg-light">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <!-- <a href="#" class="btn btn-light btn-block">
-          <i class="fas fa-arrow-left"></i> Back To Dashboard
-        </a> -->
-      </div>
-      <div class="col-md-3">
-        <button type="button" class="btn btn-success btn-block" (click)="onSubmit()">
-          <i class="fas fa-check"></i> Save Changes
-        </button>
-      </div>
-      <div class="col-md-3">
-        <a href="#" class="btn btn-danger btn-block">
-          <i class="fas fa-trash"></i> Clear Changes
-        </a>
-      </div>
     </div>
   </div>
-</section>
-
-<section id="details">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="personalInfo-tab" data-toggle="tab" href="#personalInfo" role="tab"
-              aria-controls="personalInfo" aria-selected="true">Personal Info</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="Skills-tab" data-toggle="tab" href="#Skills" role="tab" aria-controls="Skills"
-              aria-selected="false">Skills</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="workInfo-tab" data-toggle="tab" href="#workInfo" role="tab" aria-controls="workInfo"
-              aria-selected="false">Work Info</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="certifications-tab" data-toggle="tab" href="#certifications" role="tab" aria-controls="certifications"
-              aria-selected="false">Certifications</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="awards-tab" data-toggle="tab" href="#awards" role="tab" aria-controls="awards"
-              aria-selected="false">Awards</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="languages-tab" data-toggle="tab" href="#languages" role="tab" aria-controls="languages"
-              aria-selected="false">Languages</a>
-          </li>
-        </ul>
-        <div class="tab-content border-tabs" id="myTabContent">
-          <div class="tab-pane fade mx-3 show active" id="personalInfo" role="tabpanel"
-            aria-labelledby="personalInfo-tab">
-            <app-portfolio-personal-info></app-portfolio-personal-info>
+  <div class="row">
+    <div class="col-md-2">
+      <nav class="nav flex-column font-weight-bold">
+        <a class="nav-link" href="#personalInfo">Personal Info</a>
+        <a class="nav-link" href="#Skills">My Skills</a>
+        <a class="nav-link" href="#workInfo">Work Info</a>
+        <a class="nav-link" href="#Certification">Certification</a>
+        <a class="nav-link" href="#Awards">Awards</a>
+        <a class="nav-link" href="#Languages">Languages</a>
+      </nav>
+    </div>
+    <div class="col-md-10">
+      <div id="personalInfo" class="mt-2">
+        <div class="card">
+          <div class="card-header">
+            Personal Information
+            <a class="float-right" data-toggle="modal" data-target="#modalPersonalInfo"><i class="fa fa-pencil-square-o"
+                style="font-size:24px"></i></a>
           </div>
-          <div class="tab-pane fade m-3" id="Skills" role="tabpanel" aria-labelledby="Skills-tab">
-            <app-portfolio-skills></app-portfolio-skills>
-          </div>
-          <div class="tab-pane fade m-3" id="workInfo" role="tabpanel" aria-labelledby="workInfo-tab">
-            <app-portfolio-work-info></app-portfolio-work-info>
-          </div>
-          <div class="tab-pane fade m-3" id="certifications" role="tabpanel" aria-labelledby="certifications-tab">
-            <app-portfolio-certifications></app-portfolio-certifications>
-          </div>
-          <div class="tab-pane fade m-3" id="awards" role="tabpanel" aria-labelledby="awards-tab">
-            <app-portfolio-awards></app-portfolio-awards>
-          </div>
-          <div class="tab-pane fade m-3" id="languages" role="tabpanel" aria-labelledby="languages-tab">
-            <app-portfolio-languages></app-portfolio-languages>
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Name</h6>
+            <p class="card-text">{{portfolio.firstName + ' ' + portfolio.lastName}}</p>
           </div>
         </div>
+      </div>
+      <div id="Skills" class="mt-2">
+        <div class="card">
+          <div class="card-header">
+            My Skills
+            <i class="fa fa-pencil-square-o float-right" style="font-size:24px"></i>
+          </div>
+          <div class="card-body">
 
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
+        </div>
+      </div>
+      <div id="workInfo" class="mt-2">
+        <div class="card">
+          <div class="card-header">
+            Work Information
+            <i class="fa fa-pencil-square-o float-right" style="font-size:24px"></i>
+          </div>
+          <div class="card-body">
+
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+              content.</p>
+          </div>
+        </div>
+      </div>
+      <div id="Certification" class="mt-2"></div>
+      <div id="Awards" class="mt-2"></div>
+      <div id="Languages" class="mt-2"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalPersonalInfo" tabindex="-1" role="dialog" aria-labelledby="modalLabelPerosnalInfo"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabelPerosnalInfo">Personal Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-portfolio-personal-info></app-portfolio-personal-info>
       </div>
     </div>
   </div>
-</section>
+</div>
