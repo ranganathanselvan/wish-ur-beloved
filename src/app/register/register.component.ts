@@ -21,6 +21,8 @@ export class RegisterComponent implements OnInit {
   loading = false;
   submitted = false;
   newUserEmail = true;
+  passwordMatch = true;
+
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -28,16 +30,24 @@ export class RegisterComponent implements OnInit {
       lastName: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmpassword: ['', [Validators.required, Validators.minLength(6)]]
     });
+    //this.passwordMatch = true;
   }
 
   get fval() { return this.registerForm.controls; }
 
   onFormSubmit() {
     this.submitted = true;
+    this.passwordMatch = true;
+    this.newUserEmail = true;
     // return for here if form is invalid
     if (this.registerForm.invalid) {
+      return;
+    }
+    if(this.registerForm.get('password').value != this.registerForm.get('confirmpassword').value ){
+      this.passwordMatch = false;
       return;
     }
     this.loading = true;
