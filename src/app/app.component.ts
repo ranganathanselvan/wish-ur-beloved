@@ -26,14 +26,16 @@ export class AppComponent {
         this.currentUser = data;
         this.dataShareService.setCurrentUser(data);
 
-        this.portfolioService.getPortfolio(this.currentUser.email).subscribe(
-          (value: Portfolio) => {
-            this.dataShareService.setPortfolio(value);
-            console.log('app.componet.ts get portfolio complete.');
-          },
-          (error) => {
-            alert(error.error.Message);
-          });
+        if (this.currentUser) {
+          this.portfolioService.getPortfolio(this.currentUser.email).subscribe(
+            (value: Portfolio) => {
+              this.dataShareService.setPortfolio(value);
+              console.log('app.componet.ts get portfolio complete.');
+            },
+            (error) => {
+              alert(error.error.Message);
+            });
+        }
       });
 
   }
