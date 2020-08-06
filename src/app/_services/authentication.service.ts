@@ -21,7 +21,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  login(email: string, pass: string, fname: string) {
+  login(email: string, pass: string) {
     const params = new HttpParams({
       fromObject: {
         grant_type: 'password',

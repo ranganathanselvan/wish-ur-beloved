@@ -1,44 +1,71 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap");
 .signup-body {
   margin: 0;
-	padding: 0;
-	background: radial-gradient(#a429bc,#9225a7,#7f2092);
-	height: 120vh;
-  font-family: 'Noto Sans TC', sans-serif;
+  padding: 0;
+  background: radial-gradient(#a429bc, #9225a7, #7f2092);
+  height: 100vh;
+  font-family: "Noto Sans TC", sans-serif;
   overflow: auto;
 }
-.center{
-	width: 430px;
-  margin-top: 100px;
-  margin-right: auto;
-  margin-bottom: 50px;
-  margin-left: auto;
-	position: relative;
+
+.container {
+  height: 100%;
+  align-content: center;
 }
-.center .header{
-	font-size: 28px;
-	font-weight: bold;
-	color: white;
-	padding: 25px 0 30px 25px;
-	background: #5c1769;
-	border-bottom: 1px solid #370e3f;
-	border-radius: 5px 5px 0 0;
+
+input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  outline: none;
 }
-.center form{
-	position: absolute;
-	background: white;
-	width: 100%;
-	padding: 50px 10px 0 30px;
-	box-sizing: border-box;
-	border: 1px solid #6d1c7d;
-	border-radius: 0 0 5px 5px;
+
+input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  outline: none;
 }
-form input{
-	height: 50px;
-	width: 90%;
-	padding: 0 10px;
-	border-radius: 3px;
-	border: 1px solid silver;
-	font-size: 18px;
-	outline: none;
+
+.card {
+  height: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0,0,0,0.5) !important;
+}
+
+.center {
+  width:auto ;
+  margin: 130px auto;
+  position: center;
+}
+
+.card-header h3 {
+  color: white;
+}
+
+.login_btn {
+  color: black;
+  background-color: #ffc312;
+  width:auto;
+}
+
+.login_btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
 }

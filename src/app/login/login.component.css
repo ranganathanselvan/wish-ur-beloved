@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
+/* Made with love by Mutiullah Samim*/
+
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
 .login_body{
 	margin: 0;
 	padding: 0;
@@ -7,74 +10,100 @@
 	overflow: hidden;
 	font-family: 'Noto Sans TC', sans-serif;
 }
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+input[type=text] {
+	width: 87%;
+	padding: 5px;	
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
+	outline: none;
+  }
+
+  input[type=password] {
+	width: 87%;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
+	outline: none;
+  }
+
+.card{
+height: auto;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
 .center{
 	width: 430px;
 	margin: 130px auto;
-	position: relative;
-}
-.center .header{
-	font-size: 28px;
-	font-weight: bold;
-	color: white;
-	padding: 25px 0 30px 25px;
-	background: #5c1769;
-	border-bottom: 1px solid #370e3f;
-	border-radius: 5px 5px 0 0;
-}
-.center form{
-	position: absolute;
-	background: white;
-	width: 100%;
-	padding: 50px 10px 0 30px;
-	box-sizing: border-box;
-	border: 1px solid #6d1c7d;
-	border-radius: 0 0 5px 5px;
-}
-form input{
-	height: 50px;
-	width: 90%;
-	padding: 0 10px;
-	border-radius: 3px;
-	border: 1px solid silver;
-	font-size: 18px;
-	outline: none;
-}
-form input[type="password"]{
-	margin-top: 20px;
-}
-i.fa-envelope {
-	position: absolute;
-	font-size: 25px;
-	color: grey;
-	margin: 15px 0 0 -35px;
+	position: center;
 }
 
-i.fa-lock{
-  /* margin-top: 35px; */
-  position: absolute;
-	font-size: 25px;
-	color: grey;
-	margin: 35px 0 0 -35px;
+
+.card-header h3{
+color: white;
 }
-form button[type="submit"]{
-	margin-top: 40px;
-	margin-bottom: 40px;
-	width: 130px;
-	height: 45px;
-	color: white;
-	cursor: pointer;
-	line-height: 45px;
-	border-radius: 45px;
-	border-radius: 5px;
-	background: #9225a7; /* 5c1769; */
+.card-footer a{
+	color:  #FFC312;
+	}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
 }
-form button[type="submit"]:hover{
-	background: #491254;
-	transition: .5s;
+
+.input-group-prepend span{
+width: 50px;
+background-color: #FFC312;
+color: black;
+border:0 !important;
 }
-form a{
-	text-decoration: none;
-	font-size: 18px;
-	color: #7f2092;
-	padding: 0 0 0 20px;
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #FFC312;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
 }
