@@ -1,24 +1,26 @@
-  <form>
-    <div class="form-row mt-3">
-      <div class="form-group col-md-6">
-        <input type="text" class="form-control" placeholder="First name">
-      </div>
-      <div class="form-group col-md-6">
-        <input type="text" class="form-control" placeholder="Last name">
-      </div>
+<form>
+  <div class="form-row mt-3">
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="First name" [(ngModel)]="portfolio.firstName" name="FirstName">
     </div>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <input type="email" class="form-control" placeholder="Email">
-      </div>
-      <div class="form-group col-md-6">
-        <input type="text" class="form-control" placeholder="Mobile">
-      </div>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="Last name" [(ngModel)]="portfolio.lastName" name="LastName">
     </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="shortDescription" placeholder="Short Description">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <input type="email" class="form-control" placeholder="Email" [(ngModel)]="portfolio.email" name="email">
     </div>
-    <div class="form-group">
-      <textarea name="editor1" class="form-control" style="min-height: 100px;" id="longDescription" placeholder="Long Description"></textarea>
+    <div class="form-group col-md-6">
+      <input type="text" class="form-control" placeholder="Mobile" [(ngModel)]="portfolio.mobile" name="Mobile">
     </div>
-  </form>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="shortDescription" placeholder="Short Description" name="ShortDiscription"
+      [(ngModel)]="portfolio.shortDiscription">
+  </div>
+  <div class="form-group">
+    <textarea name="editor1" class="form-control" style="min-height: 100px;" id="longDescription" name="LongDescription"
+      placeholder="Long Description" [(ngModel)]="portfolio.longDiscription"></textarea>
+  </div>
+</form>

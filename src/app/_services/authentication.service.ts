@@ -11,7 +11,9 @@ export class AuthenticationService {
   public currentUser: Observable<User>;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<User>(
+      JSON.parse(sessionStorage.getItem('currentUser'))
+    );
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -24,38 +26,53 @@ export class AuthenticationService {
       fromObject: {
         grant_type: 'password',
         username: email,
-        password: pass
-      }
+        password: pass,
+      },
     });
 
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded'
-      })
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
     };
 
-    return this.http.post<any>(`api/token`, params, httpOptions)
-      .pipe(map(result => {
+    return this.http.post<any>(`api/token`, params, httpOptions).pipe(
+      map((result) => {
         if (result && result.access_token) {
+          sessionStorage.setItem('token', result.access_token);
+        }
+
+        return result;
+      })
+    );
+  }
+
+  userDetails(email: string) {
+    const opts = { params: new HttpParams({ fromString: 'email=' + email }) };
+
+    return this.http.get<any>(`api/account/getuserbyemail`, opts).pipe(
+      map((result) => {
+        if (result) {
           const user = new User();
-          user.firstName = '';
+          user.firstName = result.FirstName;
           user.lastName = '';
           user.email = email;
           user.phone = 0;
-          user.password = pass;
+          user.password = '';
 
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          localStorage.setItem('token', result.access_token);
+          sessionStorage.setItem('currentUser', JSON.stringify(user));
           this.currentUserSubject.next(user);
         }
 
         return result;
-      }));
+      })
+    );
   }
 
   logout() {
     // remove user data from local storage for log out
-    localStorage.removeItem('currentUser');
+    sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('token');
     this.currentUserSubject.next(null);
   }
 }

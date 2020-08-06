@@ -1,0 +1,40 @@
+<div>
+
+    <div class="form-row mt-3">
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" placeholder="Language" aria-label="Language"
+                [(ngModel)]="languageName" aria-describedby="btnAddLanguage">
+        </div>
+        <div class="form-group col-md-4">
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" name="read" aria-label="Language"  [(ngModel)]="canRead" aria-describedby="btnAddLanguage">
+                <label class="form-check-label"> Read</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" name="write" aria-label="Language" [(ngModel)]="canWrite" aria-describedby="btnAddLanguage">
+                <label class="form-check-label">Write</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" name="speak" aria-label="Language" [(ngModel)]="canSpeak" aria-describedby="btnAddLanguage">
+                <label class="form-check-label">Speak</label>
+            </div>  
+                      
+        </div>
+        <div class="form-group col-md-4">
+            <button class="btn btn-outline-dark" type="button" (click)="addLanguage()" id="btnAddLanguage">Add</button>
+        </div>
+    </div>
+
+
+
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center"
+            *ngFor="let lan of languages; index as i">
+            {{ lan.language }} - {{lan.read}}  {{lan.write}}  {{lan.speak}}
+            <span class="text-muted" style="color: #7f2092;">
+                <!-- <i class="fas fa-close"></i> -->
+                <i class="fas fa-trash-alt" (click)="delLanguage(i)"></i>
+            </span>
+        </li>
+    </ul>
+</div>
