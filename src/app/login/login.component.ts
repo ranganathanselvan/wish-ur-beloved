@@ -61,9 +61,9 @@ export class LoginComponent implements OnInit {
 
         (error) => {
           this.toastr.error(error.error.message, "Error");
-         // alert(error.error.message);
           this.loading = false;
-          this.pass = false;
+          if(error.error.error == "invalid_grant")
+            this.pass = false;
         }
       );
   }
