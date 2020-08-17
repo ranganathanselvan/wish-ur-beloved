@@ -1,14 +1,11 @@
 /* Made with love by Mutiullah Samim*/
-
-@import url('https://fonts.googleapis.com/css?family=Numans');
-
 .login_body{
 	margin: 0;
 	padding: 0;
 	background: radial-gradient(#a429bc,#9225a7,#7f2092);
 	height: 100vh;
 	overflow: hidden;
-	font-family: 'Noto Sans TC', sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .container{
@@ -18,7 +15,7 @@ align-content: center;
 
 input[type=text] {
 	width: 87%;
-	padding: 5px;	
+	padding: 5px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;

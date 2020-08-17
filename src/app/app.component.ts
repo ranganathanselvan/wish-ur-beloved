@@ -14,6 +14,7 @@ import { Portfolio } from './_models/portfolio';
 })
 export class AppComponent {
   currentUser: User;
+  year: number;
 
   constructor(
     private router: Router,
@@ -21,6 +22,7 @@ export class AppComponent {
     private dataShareService: DataShareService,
     private portfolioService: PortfolioService
   ) {
+    this.year = (new Date()).getFullYear();
     this.authenticationService.currentUser.subscribe(
       (data) => {
         this.currentUser = data;
