@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+.xxxlg {
+  font-size: 32px;
+}
+
+.xxlg {
+  font-size: 24px;
+}
+
+.xlg {
+  font-size: 18px;
+}
+
+.lgr {
+  font-size: 16px;
+}
+
+.lg {
+  font-size: 14px;
+}
+
+.md {
+  font-size: 12px;
+}
+
+.sm {
+  font-size: 11px;
+}
+
+.xm {
+  font-size: 10px;
+}
+
+.xxm {
+  font-size: 9px;
+}
+
+.bolder {
+  font-weight: 900;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.normal {
+  font-weight: 500;
+}
+
+.light {
+  font-weight: 400;
+}
+
+.lighter {
+  font-weight: 300;
+}
+
+.modal-row {
+  height: 25px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.long-content {
+  white-space: nowrap;
+  -moz-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.bg-color-violet {
+  color: #723dbe;
+}
+
+.bg-color-violet :hover {
+  color: #5d10c9;
+  cursor: pointer;
+}

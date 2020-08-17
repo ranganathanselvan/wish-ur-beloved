@@ -7,40 +7,74 @@
   <div class="row">
     <div class="col-md-2">
       <nav class="nav flex-column font-weight-bold">
-        <a class="nav-link" href="#personalInfo">Personal Info</a>
-        <a class="nav-link" href="#Skills">My Skills</a>
-        <a class="nav-link" href="#workInfo">Work Info</a>
-        <a class="nav-link" href="#Certification">Certification</a>
-        <a class="nav-link" href="#Awards">Awards</a>
-        <a class="nav-link" href="#Languages">Languages</a>
+        <a class="nav-link md text-uppercase" href="#personalInfo">Personal Info</a>
+        <a class="nav-link md text-uppercase" href="#Skills">My Skills</a>
+        <a class="nav-link md text-uppercase" href="#workInfo">Work Info</a>
+        <a class="nav-link md text-uppercase" href="#Certification">Certification</a>
+        <a class="nav-link md text-uppercase" href="#Awards">Awards</a>
+        <a class="nav-link md text-uppercase" href="#Languages">Languages</a>
       </nav>
     </div>
     <div class="col-md-10">
       <div id="personalInfo" class="mt-2">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header lg bold bg-color-violet text-uppercase">
             Personal Information
-            <a class="float-right" data-toggle="modal" data-target="#modalPersonalInfo"><i class="fa fa-pencil-square-o"
-                style="font-size:24px"></i></a>
+            <a class="float-right bg-color-violet" data-toggle="modal" data-target="#modalPersonalInfo"><i
+                class="fa fa-pencil-square-o xxlg bg-color-violet"></i></a>
           </div>
           <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">Name</h6>
-            <p class="card-text">{{portfolio.firstName + ' ' + portfolio.lastName}}</p>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-sm-3"><span class="xm lighter text-uppercase">Name</span></div>
+                  <div class="col-sm-9"><span
+                      class=" xlg bold long-content text-right">{{portfolio.firstName + ' ' + portfolio.lastName}}</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3"><span class="xm lighter text-uppercase">Email</span></div>
+                  <div class="col-sm-9"><span class="lg bold long-content text-right">{{portfolio.email}}</span></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3"><span class="xm lighter text-uppercase">Mobile</span></div>
+                  <div class="col-sm-9"><span class="lg bold long-content text-right">{{portfolio.mobile}}</span></div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <span class="xm lighter text-uppercase">Short Description</span></div>
+                <div class="row">
+                  <span class="lg bold text-wrap">{{portfolio.shortDiscription}}</span></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <span class="xm lighter text-uppercase">Long Description</span></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <span class="lg bold text-wrap">{{portfolio.longDiscription}}</span></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div id="Skills" class="mt-2">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header lg bold bg-color-violet text-uppercase">
             My Skills
-            <i class="fa fa-pencil-square-o float-right" style="font-size:24px"></i>
+            <a class="float-right bg-color-violet" data-toggle="modal" data-target="#modalSkills"><i
+              class="fa fa-pencil-square-o xxlg bg-color-violet"></i></a>
           </div>
           <div class="card-body">
-
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-              the card's
-              content.</p>
+            <div class="row" *ngFor="let skill of portfolio.skills">
+              <div class="col-sm-12">
+                <span class="lg bold text-wrap">{{skill.skillName}}</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -78,6 +112,23 @@
       </div>
       <div class="modal-body">
         <app-portfolio-personal-info></app-portfolio-personal-info>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalSkills" tabindex="-1" role="dialog" aria-labelledby="modalLabelSkills"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabelSkills">Skills</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-portfolio-skills></app-portfolio-skills>
       </div>
     </div>
   </div>

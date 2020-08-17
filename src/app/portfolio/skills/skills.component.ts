@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Skills } from 'src/app/_models/Skills';
+import { PortfolioService } from 'src/app/_services/portfolio.service';
+import { DataShareService } from 'src/app/_services/datashare.service';
+import { Portfolio } from 'src/app/_models/portfolio';
 
 @Component({
   selector: 'app-portfolio-skills',
@@ -7,14 +10,21 @@ import { Skills } from 'src/app/_models/Skills';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
-
+  portfolio: Portfolio;
   skills: Array<Skills>;
   txtskills: string;
 
-  constructor() { }
+  constructor(
+    private portfolioService: PortfolioService,
+    private dataShareService: DataShareService) { }
 
   ngOnInit(): void {
-    this.skills = new Array<Skills>();
+    this.dataShareService.storedPortfolio.subscribe
+      ((result) => {
+        this.portfolio = result;
+        this.skills = result.skills;
+      }
+      );
   }
 
   addSkills() {
@@ -29,6 +39,19 @@ export class SkillsComponent implements OnInit {
   removeSkill(index) {
     if (this.skills.length > 0) {
       this.skills.splice(index, 1);
+    }
+  }
+
+  updateSkills() {
+    if (this.skills.length > 0) {
+      this.portfolioService.updatePortfolio(this.portfolio).subscribe(
+        (data) => {
+          alert('Updated successfully!!');
+        },
+        (error) => {
+          alert(error.error.Message);
+        }
+      );
     }
   }
 

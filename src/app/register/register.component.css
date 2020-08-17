@@ -1,10 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap");
 .signup-body {
   margin: 0;
   padding: 0;
   background: radial-gradient(#a429bc, #9225a7, #7f2092);
   height: 100vh;
-  font-family: "Noto Sans TC", sans-serif;
+  font-family: "Open Sans", sans-serif;
   overflow: auto;
 }
 
@@ -70,10 +69,8 @@ input[type="password"] {
   margin-left: 4px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
-
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   background: #eee;
   color: #666;
