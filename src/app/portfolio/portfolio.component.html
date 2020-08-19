@@ -68,28 +68,26 @@
           <div class="card-header lg bold bg-color-violet text-uppercase">
             My Skills
             <a class="float-right bg-color-violet" data-toggle="modal" data-target="#modalSkills"><i
-              class="fa fa-pencil-square-o xxlg bg-color-violet"></i></a>
+                class="fa fa-pencil-square-o xxlg bg-color-violet"></i></a>
           </div>
           <div class="card-body">
-            <div class="row" *ngFor="let skill of portfolio.skills">
+            <div class="row">
               <div class="col-sm-12">
-                <span class="lg bold text-wrap">{{skill.skillName}}</span></div>
+                <span *ngFor="let skill of portfolio.skills" class="badge badge-info m-1">{{skill.skillName}}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div id="workInfo" class="mt-2">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header  lg bold bg-color-violet text-uppercase">
             Work Information
-            <i class="fa fa-pencil-square-o float-right" style="font-size:24px"></i>
+            <a class="float-right bg-color-violet" data-toggle="modal" data-target="#modalWorkInfo"><i
+              class="fa fa-pencil-square-o xxlg bg-color-violet"></i></a>
           </div>
           <div class="card-body">
 
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-              the card's
-              content.</p>
           </div>
         </div>
       </div>
@@ -129,6 +127,23 @@
       </div>
       <div class="modal-body">
         <app-portfolio-skills></app-portfolio-skills>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalWorkInfo" tabindex="-1" role="dialog" aria-labelledby="modalLabelWorkInfo"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabelWorkInfo">Work Info</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-portfolio-work-info></app-portfolio-work-info>
       </div>
     </div>
   </div>

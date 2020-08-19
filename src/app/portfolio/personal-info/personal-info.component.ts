@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Portfolio } from 'src/app/_models/portfolio';
 import { PortfolioService } from 'src/app/_services/portfolio.service';
 import { DataShareService } from 'src/app/_services/datashare.service';
@@ -13,7 +14,8 @@ export class PersonalInfoComponent implements OnInit {
 
   constructor(
     private portfolioService: PortfolioService,
-    private dataShareService: DataShareService) { }
+    private dataShareService: DataShareService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.dataShareService.storedPortfolio.subscribe
@@ -24,10 +26,12 @@ export class PersonalInfoComponent implements OnInit {
   updatePersonalInfo() {
     this.portfolioService.updatePortfolio(this.portfolio).subscribe(
       (data) => {
-        alert('Updated successfully!!');
+        this.toastr.success('Updated successfully!!!', 'Success!', { timeOut: 2000 });
       },
       (error) => {
-        alert(error.error.Message);
+        this.toastr.error(error.error.Message, 'Error!', {
+          timeOut: 3000
+        });
       }
     );
   }

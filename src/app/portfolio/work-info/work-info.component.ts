@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { WorkInfo } from 'src/app/_models/workinfo';
+
+declare var $: any;  // Declaring $ as a variable so that we can use it to access jQuery
 
 @Component({
   selector: 'app-portfolio-work-info',
@@ -15,15 +18,32 @@ export class WorkInfoComponent implements OnInit {
   to: Date;
   isCurrentCompany: boolean;
   expInYearMonth: string;
-
+  @ViewChild('fromDate', { static: false }) fromDate: ElementRef;
+  @ViewChild('toDate', { static: false }) toDate: ElementRef;
   constructor() { }
 
   ngOnInit() {
     this.works = new Array<WorkInfo>();
+    $(
+      function () {
+        $('#fromDate').datepicker({
+          dateFormat: 'mm/dd/yy',
+          changeMonth: true,
+          changeYear: true
+        });
+        $('#toDate').datepicker({
+          dateFormat: 'mm/dd/yy',
+          changeMonth: true,
+          changeYear: true
+        });
+      }
+    );
   }
 
   addWorkInfo() {
     if (this.companyName.length > 0) {
+      this.from = this.fromDate.nativeElement.value;
+      this.to = this.toDate.nativeElement.value;
       const w = new WorkInfo();
       w.companyName = this.companyName;
       w.role = this.designation;
