@@ -6,6 +6,9 @@ import { User } from './_models';
 import { DataShareService } from './_services/datashare.service';
 import { PortfolioService } from './_services/portfolio.service';
 import { Portfolio } from './_models/portfolio';
+import { Skills } from './_models/Skills';
+import { WorkInfo } from './_models/workinfo';
+import { Certification } from './_models/certification';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +38,16 @@ export class AppComponent {
               console.log('app.componet.ts get portfolio complete.');
             },
             (error) => {
-              alert(error.error.Message);
+              const objPortfolio = new Portfolio();
+              objPortfolio.email = this.currentUser.email;
+              objPortfolio.firstName = this.currentUser.firstName;
+              objPortfolio.lastName = this.currentUser.lastName;
+              objPortfolio.mobile = this.currentUser.phone.toString();
+              objPortfolio.skills = new Array<Skills>();
+              objPortfolio.workInfo = new Array<WorkInfo>();
+              objPortfolio.certifications = new Array<Certification>();
+              this.dataShareService.setPortfolio(objPortfolio);
+              // alert(error.error.Message);
             });
         }
       });
