@@ -41,12 +41,12 @@ import { LanguagesComponent } from './portfolio/languages/languages.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot()
+    HttpClientModule
   ],
   providers: [
     UserService,
