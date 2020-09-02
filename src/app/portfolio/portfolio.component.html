@@ -86,10 +86,36 @@
             <a class="float-right bg-color-violet" data-toggle="modal" data-target="#modalWorkInfo"><i
               class="fa fa-pencil-square-o xxlg bg-color-violet"></i></a>
           </div>
-          <div class="card-body">
-
+          <div class="card-body"  *ngFor="let work of portfolio.workInfo">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-sm-3"><span class="xm lighter text-uppercase">Organisation</span></div>
+                  <div class="col-sm-9"><span class=" xlg bold long-content text-right">{{ work.companyName }}</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3"><span class="xm lighter text-uppercase">Designation</span></div>
+                  <div class="col-sm-9"><span class="lg bold long-content text-right">{{work.role}}</span></div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-3"><span class="xm lighter text-uppercase ">Duration</span></div>
+                  <div class="col-sm-9" *ngIf="!work.isCurrentCompany"><span class="lg bold long-content text-right" ><span [innerHTML]="formatDate(work.startDate)"></span> - <span [innerHTML]="formatDate(work.endDate)"></span></span></div>
+                  <div class="col-sm-9" *ngIf="work.isCurrentCompany"><span class="lg bold long-content text-right" ><span [innerHTML]="formatDate(work.startDate)"></span> - Till date</span></div>       
+                </div>              
+              </div>
+              <div class="col-md-6">
+               
+                <div class = "row">
+                  <div class="col-sm-3"><span class="xm lighter text-uppercase">Experience</span></div>
+                  <div class="col-sm-9"><span class="lg bold long-content text-right">{{work.experienceInYearMonth}} months</span></div>
+                </div>
+              </div>
+              
+            </div>
+            
           </div>
-        </div>
+
       </div>
       <div id="Certification" class="mt-2"></div>
       <div id="Awards" class="mt-2"></div>

@@ -45,7 +45,7 @@ export class SkillsComponent implements OnInit {
   }
 
   updateSkills() {
-    if (this.skills.length > 0) {
+    
       this.portfolioService.updatePortfolio(this.portfolio).subscribe(
         (data) => {
           console.log(this.toastr);
@@ -62,7 +62,7 @@ export class SkillsComponent implements OnInit {
           });
         }
       );
-    }
+    
   }
 
 }

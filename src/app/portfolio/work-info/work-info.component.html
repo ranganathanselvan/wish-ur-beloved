@@ -35,8 +35,8 @@
       <div>
         <p>Organisation Name: {{ work.companyName }}</p>
         <p>Designation: {{work.role}}</p>
-        <p *ngIf="!work.isCurrentCompany">From: {{ work.startDate }} - {{ work.endDate}}</p>
-        <p *ngIf="work.isCurrentCompany">From: {{ work.startDate }} - Till Date</p>
+        <p *ngIf="!work.isCurrentCompany">From: <span [innerHTML]="formatDate(work.startDate)"></span> - <span [innerHTML]="formatDate(work.endDate)"></span></p>
+        <p *ngIf="work.isCurrentCompany" >From: <span [innerHTML]="formatDate(work.startDate)"></span> - Till Date</p>
         <p>Exp: {{work.experienceInYearMonth}}</p>
       </div>
       <span class="text-muted" style="color: #7f2092;">
@@ -45,6 +45,6 @@
       </span>
     </li>
   </ul>
-
+  <button type="submit" (click)="updateWorkInfo()" class="btn btn-primary mt-3">Save</button>
 
 </div>

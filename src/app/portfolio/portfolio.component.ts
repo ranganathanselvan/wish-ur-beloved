@@ -13,6 +13,7 @@ import { User } from '../_models/user';
 
 import { PortfolioService } from '../_services/portfolio.service';
 import { DataShareService } from '../_services/datashare.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-portfolio',
@@ -27,10 +28,12 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   @ViewChild(AwardsComponent) awardsReference;
   @ViewChild(LanguagesComponent) languagesReference;*/
   portfolio: Portfolio;
+ 
 
   constructor(
     private portfolioService: PortfolioService,
-    private dataShareService: DataShareService
+    private dataShareService: DataShareService,
+    public datepipe: DatePipe,
   ) { }
   currentUser: User;
 
@@ -78,6 +81,11 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
         alert(error.error.Message);
       }
     );
+
+  }
+
+  formatDate(dateValue){
+    return this.datepipe.transform(dateValue, 'dd-MMM-yyyy');
 
   }
 }
