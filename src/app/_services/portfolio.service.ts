@@ -56,7 +56,7 @@ export class PortfolioService {
           obj.workInfo = ArrayWorkInfo;
 
           const ArrayCertification = new Array<Certification>();
-          result.WorkInfo.forEach(element => {
+          result.Certifications.forEach(element => {
             const certi = new Certification();
             certi.certificationName = element.CertificationName;
             certi.certificationId = element.CertificationId;
@@ -64,6 +64,7 @@ export class PortfolioService {
             certi.validFrom = element.ValidFrom;
             certi.validTill = element.ValidTill;
             certi.additionalNotes = element.AdditionalNotes;
+            certi.isNoExpiry = element.isNoExpiry;
             ArrayCertification.push(certi);
           });
           obj.certifications = ArrayCertification;

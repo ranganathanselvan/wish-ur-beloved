@@ -1,8 +1,9 @@
 export class Certification {
-  public certificationName: string;
-  public certificationId: string;
-  public issuedBy: string;
-  public validFrom: string;
-  public validTill: string;
-  public additionalNotes: string;
+  certificationName: string;
+  certificationId: string;
+  issuedBy: string;
+  validFrom: Date;
+  validTill: Date;
+  additionalNotes: string;
+  isNoExpiry: boolean;
 }
